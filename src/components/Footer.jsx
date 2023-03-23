@@ -13,7 +13,7 @@ const Footer = () => {
 					<p className="mt-2">Throw paperwork into the trash</p>
 				</div>
 				<div className="flex flex-col items-center lg:items-end">
-					<div className="flex items-center space-x-3 mb-3">
+					<div className="flex items-center space-x-4 mb-3">
 						<img
 							src="/images/icon_facebook.svg"
 							alt="facebook icon"

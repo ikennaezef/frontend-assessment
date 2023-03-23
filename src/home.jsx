@@ -61,7 +61,7 @@ const financeCards = [
 
 const HomePage = () => {
 	return (
-		<div className="">
+		<div className="relative">
 			<TopNav />
 			<section className="grid grid-cols-1 lg:grid-cols-3 items-center container mx-auto px-2">
 				<div className="col-span-1">
@@ -77,7 +77,7 @@ const HomePage = () => {
 					<img
 						src="/images/hero_image.svg"
 						alt="person relaxing"
-						className="w-full"
+						className="w-full max-w-fit"
 					/>
 				</div>
 			</section>
@@ -92,11 +92,11 @@ const HomePage = () => {
 							employee performance.
 						</p>
 					</div>
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-20 mb-12">
+					<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8 lg:mt-20 mb-12">
 						{cardContent.map((card) => (
 							<div
 								key={card.id}
-								className="p-8 pb-10 rounded-md bg-white flex flex-col space-y-3">
+								className="p-8 pb-10 rounded-2xl shadow-card bg-white flex flex-col space-y-3">
 								<img
 									src={`/images${card.icon}`}
 									alt="icon"
@@ -112,8 +112,8 @@ const HomePage = () => {
 			</section>
 			<section className="py-24 bg-bg-pattern bg-center bg-cover bg-repeat">
 				<div className="container mx-auto px-2">
-					<div className="grid grid-cols-1 lg:grid-cols-2 items-center mb-28">
-						<div className="w-full lg:w-[550px]">
+					<div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-28">
+						<div className="w-full lg:max-w-[550px]">
 							<h2 className="text-3xl lg:text-5xl font-bold text-primary mb-6">
 								Admin & Logistics
 							</h2>
@@ -122,7 +122,7 @@ const HomePage = () => {
 								travelling employees
 							</p>
 						</div>
-						<div className="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-12 mt-12 lg:mt-0 px-3 lg:px-0">
+						<div className="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-12 pl-8 lg:pl-0">
 							{adminCards.map((card) => (
 								<div key={card.id} className="flex flex-col space-y-4">
 									<img
@@ -143,8 +143,8 @@ const HomePage = () => {
 						alt="travel and logistics"
 						className="max-w-full"
 					/>
-					<div className="grid grid-cols-1 lg:grid-cols-2 items-center mb-28">
-						<div className="w-full lg:w-[550px] mb-8 lg:mb-0">
+					<div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-28">
+						<div className="w-full lg:max-w-[550px]">
 							<h2 className="text-3xl lg:text-5xl font-bold text-primary mb-6">
 								Finance
 							</h2>
@@ -153,7 +153,7 @@ const HomePage = () => {
 								payrolls for multiple teams and companies
 							</p>
 						</div>
-						<div className="flex flex-col lg:flex-row items-center lg:space-x-12 space-y-6 lg:space-y-0 px-3 lg:px-0">
+						<div className="flex flex-col lg:flex-row items-center lg:space-x-12 space-y-6 lg:space-y-0 pl-8 lg:pl-0">
 							{financeCards.map((card) => (
 								<div key={card.id} className="flex flex-col space-y-4">
 									<img
@@ -171,28 +171,28 @@ const HomePage = () => {
 					</div>
 					<img src="/images/payroll.png" alt="payroll" className="max-w-full" />
 					<div className="grid grid-cols-2 gap-6 lg:gap-0 lg:flex items-center lg:justify-between lg:space-x-4 py-12 px-4">
-						<div>
+						<div className="order-1 lg:order-none">
 							<img
 								src="/images/unn.png"
 								alt="unn logo"
 								className="max-w-full"
 							/>
 						</div>
-						<div>
+						<div className="order-4 lg:order-none">
 							<img
 								src="/images/tenece.png"
 								alt="tenece logo"
-								className="max-w-full"
+								className="max-w-full w-[80px] lg:w-auto"
 							/>
 						</div>
-						<div>
+						<div className="order-3 lg:order-none">
 							<img src="/images/pe.png" alt="pe logo" className="max-w-full" />
 						</div>
-						<div>
+						<div className="order-2 lg:order-none">
 							<img
 								src="/images/genesys.png"
 								alt="genesys logo"
-								className="max-w-full"
+								className="max-w-full w-[100px] lg:w-auto"
 							/>
 						</div>
 					</div>
