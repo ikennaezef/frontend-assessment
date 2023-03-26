@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, TopNav } from "./components";
+import { Footer, TopNav } from "../components";
 
 const cardContent = [
 	{

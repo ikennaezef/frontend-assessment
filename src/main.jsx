@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./dashboard";
-import ErrorPage from "./error-page";
-import HomePage from "./home";
+import Dashboard from "./pages/dashboard";
+import ErrorPage from "./pages/error-page";
+import HomePage from "./pages/home";
 import "./index.css";
+import AuthLayout from "./layouts/AuthLayout";
+import Login from "./pages/login";
+import ResetPassword from "./pages/reset-password";
 
 const router = createBrowserRouter([
 	{
@@ -13,9 +16,19 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/login",
-		element: <div>Hello world!</div>,
+		path: "/auth",
+		element: <AuthLayout />,
 		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: "login",
+				element: <Login />,
+			},
+			{
+				path: "reset_password",
+				element: <ResetPassword />,
+			},
+		],
 	},
 	{
 		path: "/dashboard",

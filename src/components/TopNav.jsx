@@ -22,10 +22,14 @@ const TopNav = () => {
 					</Link>
 				</div>
 				<div className="hidden lg:flex items-center space-x-4">
-					<button className="text-light200">Sign up</button>
-					<button className="rounded bg-accent text-white py-2 px-4">
-						Sign in
-					</button>
+					<Link to="/auth/login">
+						<button className="text-light200">Sign up</button>
+					</Link>
+					<Link to="/auth/login">
+						<button className="rounded bg-accent text-white py-2 px-4">
+							Sign in
+						</button>
+					</Link>
 				</div>
 				<button className="block lg:hidden" onClick={toggleNav}>
 					<img
@@ -43,12 +47,16 @@ const TopNav = () => {
 						</button>
 						<button className="text-primary text-left w-full">About</button>
 						<div className="flex flex-col space-y-4 mt-10">
-							<button className="text-white bg-accent rounded-md py-2 w-full">
-								Log In
-							</button>
-							<button className="text-light200 bg-light50 rounded-md py-2 w-full">
-								Sign up
-							</button>
+							<Link to="/auth/login">
+								<button className="text-white bg-accent rounded-md py-2 w-full">
+									Log In
+								</button>
+							</Link>
+							<Link to="/auth/login">
+								<button className="text-light200 bg-light50 rounded-md py-2 w-full">
+									Sign up
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
