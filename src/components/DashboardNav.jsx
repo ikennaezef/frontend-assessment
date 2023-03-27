@@ -81,9 +81,11 @@ const DashboardNav = () => {
 							</div>
 						</div>
 						<div className="border-t border-t-[#DFE1E6]">
-							<button className="px-5 py-4 text-sm text-primary50">
-								Log Out
-							</button>
+							<Link to="/auth/login">
+								<button className="px-5 py-4 text-sm text-primary50">
+									Log Out
+								</button>
+							</Link>
 						</div>
 					</div>
 					<Link to="/">

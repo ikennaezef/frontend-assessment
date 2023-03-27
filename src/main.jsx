@@ -8,6 +8,9 @@ import "./index.css";
 import AuthLayout from "./layouts/AuthLayout";
 import Login from "./pages/login";
 import ResetPassword from "./pages/reset-password";
+import EmailSentPage from "./pages/email-sent";
+import ChangePassword from "./pages/change-password";
+import ResetSuccessful from "./pages/reset-successful";
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
 			{
 				path: "reset_password",
 				element: <ResetPassword />,
+			},
+			{
+				path: "email_sent",
+				element: <EmailSentPage />,
+			},
+			{
+				path: "change_password",
+				element: <ChangePassword />,
+			},
+			{
+				path: "reset_successful",
+				element: <ResetSuccessful />,
 			},
 		],
 	},

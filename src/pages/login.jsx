@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { UserInfo } from "../components";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthCard, UserInfo } from "../components";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [inputValues, setInputValues] = useState({
 		email: "",
 		password: "",
@@ -20,6 +21,9 @@ const Login = () => {
 	const handleClick = () => {
 		if (currentStep === 1) {
 			setCurrentStep(2);
+		}
+		if (currentStep === 2) {
+			navigate("/dashboard");
 		}
 	};
 
@@ -50,7 +54,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="p-10 shadow-authCard rounded-lg w-[480px]">
+		<AuthCard>
 			<div className="mb-8">
 				<h1 className="text-2xl text-primary text-center font-bold mb-4">
 					Login
@@ -125,7 +129,7 @@ const Login = () => {
 					</button>
 				</Link>
 			</div>
-		</div>
+		</AuthCard>
 	);
 };
 

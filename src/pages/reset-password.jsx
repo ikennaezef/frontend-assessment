@@ -1,32 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthCard } from "../components";
 
 const ResetPassword = () => {
-	const [email, setEmail] = useState("");
-	const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+	const navigate = useNavigate();
+	const [email, setEmail] = useState({
+		value: "",
+		error: false,
+	});
 	const [inputIsFocused, setInputIsFocused] = useState(false);
 
-	const validateEmail = (mail) => {
-		return mail.match(
-			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
+	const handleChange = (value) => {
+		setEmail({
+			...email,
+			value,
+		});
 	};
 
-	const handleChange = (value) => {
-		setEmail(value);
-		if (value.length > 7) {
-			if (validateEmail(value)) {
-				setButtonIsDisabled(false);
-			} else {
-				setButtonIsDisabled(true);
-			}
+	const handleClick = () => {
+		if (email.value === "") {
+			setEmail({
+				...email,
+				error: true,
+			});
+		} else {
+			navigate("/auth/email_sent");
 		}
 	};
 
-	const handleClick = () => {};
-
 	return (
-		<div className="p-10 shadow-authCard rounded-lg w-[480px]">
+		<AuthCard>
 			<div className="mb-8">
 				<h1 className="text-2xl text-primary text-center font-bold mb-4">
 					Reset Password
@@ -38,29 +41,40 @@ const ResetPassword = () => {
 			<div className="flex flex-col space-y-2">
 				<label className="text-primary font-medium">Email Address</label>
 				<div
-					className={`flex items-center py-2 px-3 h-10 border-2 ${
-						inputIsFocused ? "border-inputOutline" : "border-inputBorder"
+					className={`flex items-center py-2 px-3 h-10 ${
+						email.error ? "border" : "border-2"
+					} ${
+						inputIsFocused
+							? "border-inputOutline"
+							: email.error
+							? "border-error"
+							: "border-inputBorder"
 					} rounded`}>
 					<input
 						type="text"
-						value={email}
+						value={email.value}
 						onChange={(e) => handleChange(e.target.value)}
 						placeholder="Enter email"
 						className="text-sm w-full outline-none"
 						onFocus={() => setInputIsFocused(true)}
 						onBlur={() => setInputIsFocused(false)}
 					/>
-					{!buttonIsDisabled && (
-						<img src="/images/icon_check.svg" alt="check icon" />
-					)}
 				</div>
+				{email.error && (
+					<div className="flex items-center space-x-2">
+						<img
+							src="/images/icon_error.svg"
+							alt="error icon"
+							className="w-4 h-4"
+						/>
+						<span className="text-xs text-error">Enter email address</span>
+					</div>
+				)}
 			</div>
 
 			<button
 				onClick={handleClick}
-				className={`${
-					buttonIsDisabled ? "bg-light50" : "bg-accent"
-				} h-10 w-full rounded my-8`}></button>
+				className={`bg-accent h-10 w-full rounded my-8`}></button>
 			<div className="border-t border-t-inputBorder pt-4 mt-6 flex justify-center">
 				<Link to="/auth/login">
 					<button className="text-accent text-sm text-center">
@@ -68,7 +82,7 @@ const ResetPassword = () => {
 					</button>
 				</Link>
 			</div>
-		</div>
+		</AuthCard>
 	);
 };
 
